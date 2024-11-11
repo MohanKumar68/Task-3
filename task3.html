@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - Luxury Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="logo">
+            <h1>AURA</h1>
+            <p>Luxury Fashion</p>
+        </div>
+
+        <div class="message-container"></div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchForm('login')">Login</div>
+            <div class="tab" onclick="switchForm('signup')">Sign Up</div>
+        </div>
+
+        <form id="loginForm" action="log.php" method="POST" class="fade-in">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" required>
+            </div>
+            <button type="submit" name="login" class="btn">Sign In</button>
+            <div class="form-footer">
+                <a href="#">Forgot your password?</a>
+            </div>
+        </form>
+
+        <form id="signupForm" action="sign.php" method="POST" class="fade-in">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" name="password" required minlength="8">
+            </div>
+            <button type="submit" name="signup" class="btn">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        function switchForm(form) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const tabs = document.querySelectorAll('.tab');
+
+            if (form === 'login') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                tabs[0].classList.remove('active');
+                tabs[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
